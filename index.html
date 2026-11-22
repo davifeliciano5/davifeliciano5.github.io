@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Davi Feliciano Sousa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* VOICE  direto e confiante: uma página que vende o Davi para um gestor de SOC
+   IDEA   uma sessão de terminal de analista: investigar log, achar o padrão, mapear, escalar
+   PICTURE terminal preto mostrando uma triagem real de força bruta no auth.log
+   COLOUR  branco puro, preto, um cinza de apoio; no escuro, o inverso
+   TYPE   IBM Plex Sans para tudo, Plex Mono só dentro do terminal
+   LAYOUT  proposta de valor + terminal lado a lado; logo abaixo, o que entrego em quatro colunas */
+:root{color-scheme:light dark;--bg:light-dark(#fff,#000);--ink:light-dark(#000,#fff);--mute:light-dark(#575757,#a8a8a8);--line:light-dark(#000,#fff);--soft:light-dark(#e6e6e6,#2a2a2a);--tbg:light-dark(#000,#fff);--tink:light-dark(#fff,#000);--tmute:light-dark(#9a9a9a,#666)}
+:root[data-theme=light]{color-scheme:light}
+:root[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box;min-width:0}
+html{scroll-padding-top:72px;scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 "IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;overflow-x:clip}
+a{color:inherit;text-underline-offset:3px;text-decoration-thickness:1px}
+a:focus-visible{outline:2px solid currentColor;outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(5vw,16px);padding-right:max(5vw,16px)}
+header.top{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--soft)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:60px;flex-wrap:wrap}
+.brand{font-weight:700;text-decoration:none;letter-spacing:-.01em}
+nav{display:flex;gap:4px;flex-wrap:wrap}
+nav a{text-decoration:none;color:var(--mute);padding:10px;font-size:15px;border-radius:4px}
+nav a:hover{color:var(--ink);background:var(--soft)}
+.hero{padding-top:clamp(32px,5vw,64px);padding-bottom:clamp(32px,4vw,56px)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,4vw,56px);align-items:center}
+.who{font-size:16px;font-weight:600;margin:0 0 14px}
+.who span{font-weight:400;color:var(--mute)}
+h1{font-size:clamp(36px,4.8vw,58px);line-height:1.04;letter-spacing:-.03em;font-weight:700;margin:0 0 20px;text-wrap:balance}
+.lead{font-size:clamp(17px,1.5vw,19px);margin:0 0 28px;color:var(--mute);max-width:52ch}
+.lead strong{color:var(--ink);font-weight:600}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;min-height:46px;padding:0 22px;border:1px solid var(--line);text-decoration:none;font-weight:600;font-size:15px;border-radius:4px}
+.btn.solid{background:var(--ink);color:var(--bg)}
+.btn:hover{background:var(--soft);color:var(--ink)}
+.btn.solid:hover{background:var(--mute);border-color:var(--mute);color:var(--bg)}
+.term{background:var(--tbg);color:var(--tink);border-radius:8px;overflow:hidden;border:1px solid var(--line)}
+.term-bar{display:flex;align-items:center;gap:7px;padding:12px 16px;border-bottom:1px solid color-mix(in srgb,var(--tink) 18%,transparent)}
+.term-bar i{width:11px;height:11px;border-radius:50%;border:1px solid var(--tmute)}
+.term-bar b{margin-left:10px;font:500 13px "IBM Plex Mono",ui-monospace,monospace;color:var(--tmute)}
+.term pre{margin:0;padding:18px 20px 22px;font:14px/1.7 "IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+.term .p,.term .k{color:var(--tmute)}
+.term .c{font-weight:500}
+.term .hl{font-weight:500;border-bottom:1px solid var(--tink)}
+.cur{display:inline-block;width:.6em;height:1.1em;vertical-align:-.18em;background:var(--tink);animation:blink 1.1s steps(1) infinite}
+@keyframes blink{50%{opacity:0}}
+@media(prefers-reduced-motion:reduce){.cur{animation:none}html{scroll-behavior:auto}}
+.note{font-size:13px;color:var(--mute);margin:8px 2px 0}
+.deliver{border-top:1px solid var(--line);margin-top:clamp(32px,4vw,48px);padding-top:clamp(24px,3vw,32px)}
+.deliver h2{font-size:clamp(22px,2.2vw,26px);margin:0 0 20px;letter-spacing:-.02em;line-height:1.2}
+.dl{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px 32px;list-style:none;margin:0;padding:0}
+.dl h3{font-size:17px;line-height:1.3;margin:0 0 6px;letter-spacing:-.01em}
+.dl p{margin:0;color:var(--mute);font-size:15px;line-height:1.55}
+.proof{background:var(--ink);color:var(--bg)}
+.proof .wrap{padding-top:clamp(36px,4vw,56px);padding-bottom:clamp(36px,4vw,56px)}
+.proof h2{font-size:clamp(24px,2.6vw,30px);letter-spacing:-.02em;line-height:1.15;margin:0 0 28px;max-width:30ch}
+.nums{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px 32px;list-style:none;margin:0;padding:0}
+.nums li{border-top:1px solid color-mix(in srgb,var(--bg) 35%,transparent);padding-top:14px}
+.nums b{display:block;font-size:clamp(34px,4vw,48px);line-height:1;letter-spacing:-.03em;margin-bottom:10px;white-space:nowrap}
+.nums span{font-size:15px;opacity:.78;display:block;max-width:26ch}
+section.band{padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(40px,5vw,72px);border-bottom:1px solid var(--soft)}
+.sec{display:grid;grid-template-columns:minmax(0,14rem) minmax(0,1fr);gap:clamp(16px,4vw,56px)}
+.sec>h2{font-size:clamp(26px,3vw,34px);line-height:1.1;letter-spacing:-.025em;margin:0;font-weight:700}
+.job{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:4px 24px;padding-bottom:36px;margin-bottom:36px;border-bottom:1px solid var(--soft)}
+.job:last-child{border-bottom:0;margin-bottom:0;padding-bottom:0}
+.job h3{font-size:21px;line-height:1.3;margin:0;letter-spacing:-.01em}
+.job .org{grid-column:1;color:var(--mute);margin:0 0 14px}
+.job time{grid-column:2;grid-row:1;white-space:nowrap;font-size:15px;color:var(--mute);padding-top:4px}
+.job ul{grid-column:1/-1;margin:0;padding-left:1.15em;display:grid;gap:8px;max-width:72ch}
+.job li::marker{color:var(--mute)}
+.job strong{font-weight:600}
+.soc{grid-column:1/-1;margin:18px 0 0;padding:14px 18px;border:1px solid var(--line);border-radius:4px;max-width:72ch;font-size:15px}
+.soc b{font-weight:600}
+.skills{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
+.skills h3{font-size:16px;margin:0 0 10px;font-weight:600}
+.tags{display:flex;flex-wrap:wrap;gap:8px;list-style:none;margin:0;padding:0}
+.tags li{border:1px solid var(--soft);padding:4px 11px;border-radius:4px;font-size:14px;line-height:1.5}
+.skills .main .tags li{border-color:var(--line);background:var(--ink);color:var(--bg)}
+.two{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 40px}
+.two h3{font-size:19px;margin:0 0 4px}
+.two p{margin:0;color:var(--mute)}
+.lang{display:grid;gap:14px}
+.lang div{display:grid;grid-template-columns:7.5em minmax(0,1fr);gap:12px}
+.lang b{font-weight:600}
+.lang span{color:var(--mute)}
+footer{background:var(--ink);color:var(--bg)}
+footer .wrap{padding-top:clamp(40px,5vw,72px);padding-bottom:clamp(32px,4vw,48px);display:grid;grid-template-columns:minmax(0,1.2fr) minmax(0,1fr);gap:32px;align-items:end}
+footer h2{font-size:clamp(30px,4vw,46px);line-height:1.08;letter-spacing:-.03em;margin:0;max-width:17ch}
+footer p{margin:14px 0 0;opacity:.78;max-width:46ch}
+.contact{list-style:none;margin:0;padding:0;display:grid;gap:2px}
+.contact a{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid color-mix(in srgb,var(--bg) 25%,transparent);text-decoration:none;flex-wrap:wrap}
+.contact a:hover{opacity:.7}
+.contact span{opacity:.7;font-size:15px}
+.contact b{font-weight:500;overflow-wrap:anywhere}
+.fine{grid-column:1/-1;font-size:13px;opacity:.6;margin:16px 0 0}
+@media(max-width:960px){.dl,.nums{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:860px){.hero-grid,.sec{grid-template-columns:minmax(0,1fr)}}
+@media(max-width:600px){.skills,.two,footer .wrap{grid-template-columns:minmax(0,1fr)}.job{grid-template-columns:minmax(0,1fr)}.job time{grid-column:1;grid-row:auto;padding:0;order:-1}nav{display:none}.term pre{font-size:13px;padding:16px}}
+@media(max-width:440px){.dl{grid-template-columns:minmax(0,1fr)}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#inicio">Davi Feliciano</a>
+    <nav aria-label="Seções">
+      <a href="#entrego">O que entrego</a>
+      <a href="#experiencia">Experiência</a>
+      <a href="#habilidades">Habilidades</a>
+      <a href="#formacao">Formação</a>
+      <a href="#contato">Contato</a>
+    </nav>
+  </div>
+</header>
+
+<main id="inicio">
+  <div class="hero wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="who">Davi Feliciano <span>| Blue Team, SOC N1 | Brasília (DF)</span></p>
+        <h1>Encontro o que está fora do padrão nos logs e transformo alerta em resposta.</h1>
+        <p class="lead">Analista de SOC N1 em formação, com <strong>Linux, SIEM Wazuh, MITRE ATT&amp;CK e análise de logs</strong>. No TCU, investiguei <strong>mais de 1 milhão de registros</strong> atrás de anomalias. Chego pronto para triar alertas, investigar e escalar com contexto.</p>
+        <div class="actions">
+          <a class="btn solid" href="#contato">Entrar em contato</a>
+          <a class="btn" href="#experiencia">Ver experiência</a>
+        </div>
+      </div>
+      <div>
+        <div class="term" role="img" aria-label="Exemplo de triagem no terminal: contar falhas de login SSH por IP no auth.log, identificar força bruta, mapear para MITRE ATT&CK T1110 e escalar">
+          <div class="term-bar" aria-hidden="true"><i></i><i></i><i></i><b>davi@soc: ~</b></div>
+<pre aria-hidden="true"><span class="p">$</span> <span class="c">grep "Failed password" /var/log/auth.log \
+  | awk '{print $11}' | sort | uniq -c \
+  | sort -nr | head -3</span>
+    <span class="hl">412 203.0.113.7</span>
+     87 198.51.100.23
+     12 192.0.2.44
+<span class="p">$</span> <span class="c">grep "Accepted" /var/log/auth.log \
+  | grep -c 203.0.113.7</span>
+0
+<span class="k"># 412 falhas, nenhum acesso aceito</span>
+<span class="k"># MITRE ATT&amp;CK: T1110 Brute Force</span>
+<span class="k"># ação: bloquear IP e escalar para o N2</span>
+<span class="p">$</span> <span class="cur"></span></pre>
+        </div>
+        <p class="note">Exemplo ilustrativo de triagem, com IPs de documentação.</p>
+      </div>
+    </div>
+
+    <div class="deliver" id="entrego">
+      <h2>O que entrego para o seu SOC desde o primeiro dia</h2>
+      <ul class="dl">
+        <li><h3>Triagem de alertas no Wazuh</h3><p>Classifico o alerta, separo falso positivo do incidente real e escalo para o N2 com evidências e contexto.</p></li>
+        <li><h3>Investigação de logs</h3><p>Leio logs de Linux e de aplicação com grep, awk e SQL para achar o padrão suspeito no meio do volume.</p></li>
+        <li><h3>Ameaças mapeadas no MITRE ATT&amp;CK</h3><p>Traduzo o que o log mostra em tática e técnica, para o time saber o que está acontecendo e o que fazer.</p></li>
+        <li><h3>Automação e relatórios</h3><p>Escrevo scripts em Python que cortam trabalho manual e monto painéis em Power BI que a gestão entende.</p></li>
+      </ul>
+    </div>
+  </div>
+
+  <section class="proof" aria-labelledby="prova">
+    <div class="wrap">
+      <h2 id="prova">Resultados que já entreguei</h2>
+      <ul class="nums">
+        <li><b>1 milhão+</b><span>registros validados no TCU, com inconsistências e anomalias identificadas</span></li>
+        <li><b>5.000+</b><span>registros reunidos por uma API de coleta automatizada que desenvolvi</span></li>
+        <li><b>20+</b><span>usuários usando em produção o sistema com controle de acesso que construí</span></li>
+        <li><b>100%</b><span>do processo de entrega e coleta da Carex digitalizado e rastreável</span></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="band" id="experiencia">
+    <div class="wrap sec">
+      <h2>Experiência</h2>
+      <div>
+        <article class="job">
+          <h3>Estagiário de Tecnologia da Informação</h3>
+          <time>Set 2024 – Mar 2026</time>
+          <p class="org">Tribunal de Contas da União (TCU), Brasília, DF</p>
+          <ul>
+            <li>Validei mais de <strong>1 milhão de registros</strong>, identificando inconsistências e anomalias que comprometiam a qualidade das análises.</li>
+            <li>Escrevi consultas em <strong>SQL</strong> para investigar grandes volumes de dados.</li>
+            <li>Automatizei rotinas de coleta e tratamento de dados com <strong>Python</strong>.</li>
+            <li>Desenvolvi uma API de coleta automatizada (web scraping) que reuniu mais de 5.000 registros.</li>
+            <li>Criei dashboards em <strong>Power BI</strong> para acompanhar indicadores e apoiar decisões.</li>
+            <li>Desenvolvi algoritmos para calcular o coeficiente de Gini dos 27 estados brasileiros.</li>
+            <li>Criei um painel de avaliação de serviços públicos com Power Apps e SharePoint.</li>
+          </ul>
+          <p class="soc"><b>No SOC, isso vira:</b> olhar grandes volumes de eventos, separar o normal do suspeito e reportar com clareza.</p>
+        </article>
+        <article class="job">
+          <h3>Desenvolvedor de Software</h3>
+          <time>Jul 2024 – Dez 2025</time>
+          <p class="org">Carex Express Logística e Transporte de Cargas e Encomendas Ltda, Brasília, DF</p>
+          <ul>
+            <li>Implementei <strong>autenticação e controle de acesso por perfil (RBAC)</strong> com Spring Security e JWT, garantindo que cada usuário acessasse só o que o cargo permite.</li>
+            <li>Desenvolvi o sistema web de logística em Java com Spring Boot, digitalizando 100% do processo de entrega e coleta e aumentando a <strong>rastreabilidade</strong>.</li>
+            <li>Criei relatórios automáticos de atividade por funcionário e de cobrança por cliente.</li>
+            <li>Coloquei o sistema em produção, hoje usado por mais de 20 gestores e operadores.</li>
+          </ul>
+          <p class="soc"><b>No SOC, isso vira:</b> entender como autenticação e permissões funcionam por dentro, e por isso reconhecer quando alguém tenta abusar delas.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="band" id="habilidades">
+    <div class="wrap sec">
+      <h2>Habilidades</h2>
+      <div class="skills" id="skills"></div>
+    </div>
+  </section>
+
+  <section class="band" id="formacao">
+    <div class="wrap sec">
+      <h2>Formação e idiomas</h2>
+      <div class="two">
+        <div>
+          <h3>Ciência da Computação</h3>
+          <p>Centro Universitário do Distrito Federal (UDF), Brasília, DF</p>
+          <p>Conclusão prevista para dezembro de 2026</p>
+        </div>
+        <div class="lang">
+          <div><b>Português</b><span>Nativo</span></div>
+          <div><b>Inglês</b><span>Intermediário: leio bem documentação técnica, ferramentas e alertas; conversação em desenvolvimento</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contato">
+  <div class="wrap">
+    <div>
+      <h2>Precisa reforçar o primeiro nível do seu SOC?</h2>
+      <p>Estou pronto para começar como Analista de SOC N1. Me chame por e-mail ou telefone para conversarmos.</p>
+    </div>
+    <ul class="contact">
+      <li><a href="mailto:davifelicianosousa2020@gmail.com"><span>E-mail</span><b>davifelicianosousa2020@gmail.com</b></a></li>
+      <li><a href="tel:+5561996491981"><span>Telefone</span><b>(61) 99649-1981</b></a></li>
+      <li><a href="https://github.com/davifeliciano5"><span>GitHub</span><b>github.com/davifeliciano5</b></a></li>
+    </ul>
+    <p class="fine">Davi Feliciano Oliveira de Sousa, Brasília (DF), 2026</p>
+  </div>
+</footer>
+
+<script>
+{
+  const skills = [
+    ["Blue Team e SOC", ["Linux", "SIEM Wazuh", "MITRE ATT&CK", "Análise de logs", "Triagem de alertas"], true],
+    ["Segurança e controle de acesso", ["Spring Security", "JWT", "Autenticação e autorização", "RBAC", "Validação de entrada"]],
+    ["Análise e investigação de dados", ["SQL", "Python", "grep e awk", "Validação de bases", "Detecção de anomalias"]],
+    ["Redes", ["Modelo TCP/IP", "Principais protocolos"]],
+    ["Infraestrutura e DevOps", ["Docker", "Docker Compose", "AWS", "Git", "GitHub"]],
+    ["Desenvolvimento e relatórios", ["Java", "Spring Boot", "Django", "C++", "APIs REST", "MySQL/JPA", "Power BI", "Power Apps"]]
+  ];
+  const esc = s => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  document.getElementById("skills").innerHTML = skills.map(([t, items, main]) =>
+    `<div class="${main ? "main" : ""}"><h3>${esc(t)}</h3><ul class="tags">${items.map(i => `<li>${esc(i)}</li>`).join("")}</ul></div>`
+  ).join("");
+}
+</script>
+</body>
+</html>
